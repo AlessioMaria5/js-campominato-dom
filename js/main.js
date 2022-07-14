@@ -12,25 +12,17 @@ let punteggio = document.getElementById('punteggio');
 let numeroPunteggio = document.createElement('span');
 punteggio.append(numeroPunteggio);
 let punteggioAttuale = '';
-// PUNTEGGIO
-
-// BOMBE 
-
-// let bombe = []
 
 // GENERA CELLE e DIFFICOLTA  -----------------------------------
 
 let bottoneStart = document.getElementById('genera');
     bottoneStart.addEventListener('click', 
     function(){
-        // bombe = generaBombe(100)
         campo.innerHTML = '';
         
         level(facile,10,100);
         level(medium,9,81);
-        level(difficile,7,49) 
-        
-    
+        level(difficile,7,49)     
 })
 
 // LE MIE FUNZIONI ///////////////////////////
@@ -48,8 +40,6 @@ function generaBombe(numeroCelle) {
     }
     return bombe;
 }
-
-
 
 function level(x,y,z) {
 
@@ -74,11 +64,10 @@ function level(x,y,z) {
                 cella.classList.remove('clicked')
                 cella.classList.add('bomb');
                 console.log(finalBombe);
-                alert('Partita Finita!');
+                alert('Partita Finita! Hai realizzato '+punteggioAttuale+' punti');
 
                 campo.innerHTML = '';
-
-
+                punteggioAttuale = 0;
             }
 
             if(cella.classList.contains('clicked')){ 
@@ -89,5 +78,3 @@ function level(x,y,z) {
         }
     }
 }
-
-//BOMBE
