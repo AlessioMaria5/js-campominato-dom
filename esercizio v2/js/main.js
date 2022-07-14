@@ -11,7 +11,7 @@ let difficile = 'Difficile'
 let punteggio = document.getElementById('punteggio');
 let numeroPunteggio = document.createElement('span');
 punteggio.append(numeroPunteggio);
-let punteggioAttuale = '';
+let punteggioAttuale = '0';
 
 // GENERA CELLE e DIFFICOLTA  -----------------------------------
 
@@ -32,12 +32,14 @@ function generaBombe(numeroCelle) {
 
     for (bmb=0 ; bombe.length<16 ; bmb++) {
         let generatorePosizione = Math.floor(Math.random()* numeroCelle);
-        console.log(generatorePosizione)
+        
         while (!(bombe.includes(generatorePosizione))){
             bombe.push(generatorePosizione);
-            console.log(bombe);
+            
         }
+
     }
+    console.log(bombe);
     return bombe;
 }
 

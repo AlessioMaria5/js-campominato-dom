@@ -80,6 +80,7 @@ function level(x,y,z) {
                 cella.classList.remove('clicked')
                 cella.classList.add('bomb');
                 console.log(finalBombe);
+
                 alert('Partita Finita! Hai realizzato '+punteggioAttuale+' punti');
 
                 campo.innerHTML = '';
