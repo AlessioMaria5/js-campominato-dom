@@ -16,14 +16,14 @@ let punteggioAttuale = '';
 
 // BOMBE 
 
-let bombe = []
+// let bombe = []
 
 // GENERA CELLE e DIFFICOLTA  -----------------------------------
 
 let bottoneStart = document.getElementById('genera');
     bottoneStart.addEventListener('click', 
     function(){
-
+        // bombe = generaBombe(100)
         campo.innerHTML = '';
         
         level(facile,10,100);
@@ -37,7 +37,11 @@ let bottoneStart = document.getElementById('genera');
 
 function level(x,y,z) {
 
+
     if(livello.value == `${x}`){
+        generaBombe(z)
+        console.log(generaBombe(z));
+
         for (let i= 1 ;i<=z; i++) { 
             numeroPunteggio.innerHTML = 'il tuo punteggio è 0';
 
@@ -52,9 +56,11 @@ function level(x,y,z) {
             cella.classList.add('clicked');
             console.log(i); 
 
-            if(cella.classList.contains('clicked')){
-               
+            if(cella.classList.contains('clicked')){ 
                 punteggioAttuale++
+                if(generaBombe(z).includes(i)){
+                    cella.classList.add('bomb');
+                }
             }
             numeroPunteggio.innerHTML = 'il tuo punteggio è '+punteggioAttuale;  
         })
@@ -65,14 +71,18 @@ function level(x,y,z) {
 
 //BOMBE
 
+function generaBombe(numeroCelle) {
+    let bombe = [];
 
-
-let randomPosition = Math.floor(Math.random()*100);
-for (bmb=0 ; bmb<16 ; bmb++) {
-
-    bombe.push(randomPosition);
-    console.log(bombe);    
+    for (bmb=0 ; bmb<16 ; bmb++) {
+        let generatorePosizione = Math.floor(Math.random()* numeroCelle);
+        bombe.push(generatorePosizione);
+    }
+    return bombe;
 }
+
+
+
 
 
 
