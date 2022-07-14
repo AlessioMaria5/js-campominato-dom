@@ -35,13 +35,22 @@ let bottoneStart = document.getElementById('genera');
 
 // LE MIE FUNZIONI ///////////////////////////
 
+function generaBombe(numeroCelle) {
+    let bombe = [];
+
+    for (bmb=0 ; bmb<16 ; bmb++) {
+        let generatorePosizione = Math.floor(Math.random()* numeroCelle);
+        bombe.push(generatorePosizione);
+    }
+    return bombe;
+}
+
+
 function level(x,y,z) {
 
+    let finalBombe = generaBombe(z)
 
     if(livello.value == `${x}`){
-        generaBombe(z)
-        console.log(generaBombe(z));
-
         for (let i= 1 ;i<=z; i++) { 
             numeroPunteggio.innerHTML = 'il tuo punteggio è 0';
 
@@ -56,11 +65,14 @@ function level(x,y,z) {
             cella.classList.add('clicked');
             console.log(i); 
 
+            if(finalBombe.includes(i)){
+                cella.classList.remove('clicked')
+                cella.classList.add('bomb');
+                console.log(finalBombe);
+            }
+
             if(cella.classList.contains('clicked')){ 
                 punteggioAttuale++
-                if(generaBombe(z).includes(i)){
-                    cella.classList.add('bomb');
-                }
             }
             numeroPunteggio.innerHTML = 'il tuo punteggio è '+punteggioAttuale;  
         })
@@ -70,25 +82,4 @@ function level(x,y,z) {
 
 
 //BOMBE
-
-function generaBombe(numeroCelle) {
-    let bombe = [];
-
-    for (bmb=0 ; bmb<16 ; bmb++) {
-        let generatorePosizione = Math.floor(Math.random()* numeroCelle);
-        bombe.push(generatorePosizione);
-    }
-    return bombe;
-}
-
-
-
-
-
-
-
-
-
-
-
 
