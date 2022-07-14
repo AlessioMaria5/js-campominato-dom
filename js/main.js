@@ -63,6 +63,8 @@ function level(x,y,z) {
             if(finalBombe.includes(i)){
                 cella.classList.remove('clicked')
                 cella.classList.add('bomb');
+
+               
                 console.log(finalBombe);
                 alert('Partita Finita! Hai realizzato '+punteggioAttuale+' punti');
 
