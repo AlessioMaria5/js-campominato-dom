@@ -38,12 +38,17 @@ let bottoneStart = document.getElementById('genera');
 function generaBombe(numeroCelle) {
     let bombe = [];
 
-    for (bmb=0 ; bmb<16 ; bmb++) {
+    for (bmb=0 ; bombe.length<16 ; bmb++) {
         let generatorePosizione = Math.floor(Math.random()* numeroCelle);
-        bombe.push(generatorePosizione);
+        console.log(generatorePosizione)
+        while (!(bombe.includes(generatorePosizione))){
+            bombe.push(generatorePosizione);
+            console.log(bombe);
+        }
     }
     return bombe;
 }
+
 
 
 function level(x,y,z) {
@@ -69,6 +74,7 @@ function level(x,y,z) {
                 cella.classList.remove('clicked')
                 cella.classList.add('bomb');
                 console.log(finalBombe);
+                
             }
 
             if(cella.classList.contains('clicked')){ 
@@ -80,6 +86,4 @@ function level(x,y,z) {
     }
 }
 
-
 //BOMBE
-
