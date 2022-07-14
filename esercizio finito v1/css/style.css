@@ -79,3 +79,8 @@ main {
 
     background-color: red;
 }
+
+.pointereve {
+
+    pointer-events: none;
+}

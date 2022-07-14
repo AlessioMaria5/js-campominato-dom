@@ -1,8 +1,6 @@
 let campo = document.getElementById('campo');
-
 // LEVELS 
 let livello = document.getElementById('diff');
-
 
 // PUNTEGGIO
 let punteggio = document.getElementById('punteggio');
@@ -19,25 +17,19 @@ let bottoneStart = document.getElementById('genera');
         let livelloInterno = parseInt(document.getElementById('diff').value);
    
         switch(livelloInterno) {
-
             case 1:
-                console.log('sono nel case 1');
-                    level(1,10,100);
+                    level(10,100);
                 break;
-                  
-                    
-            case 2:
-                console.log('sono nel case 2');
-                        
-                    level(2,9,81);
+                          
+            case 2:             
+                    level(9,81);
                 break;
-                    
-                   
-            case 3:
-                console.log('sono nel case 3');           
-                    level(3,7,49);
+            
+            case 3:          
+                    level(7,49);
                 break;
-                    
+            case 4:
+                level(20,400)         
         }    
 })
 
@@ -48,21 +40,17 @@ function generaBombe(numeroCelle) {
 
     for (bmb=0 ; bombe.length<16 ; bmb++) {
         let generatorePosizione = Math.floor(Math.random()* numeroCelle);
-        console.log(generatorePosizione)
         while (!(bombe.includes(generatorePosizione))){
-            bombe.push(generatorePosizione);
-            console.log(bombe);
+            bombe.push(generatorePosizione); 
         }
     }
+   
     return bombe;
 }
 
-function level(x,y,z) {
-
+function level(y,z) {
     let finalBombe = generaBombe(z)
-
-    if(livello.value == `${x}`){
-        for (let i= 1 ;i<=z; i++) { 
+        for (let i= 1 ;i<=z; i++) {  
             numeroPunteggio.innerHTML = 'il tuo punteggio è 0';
 
             let cella = document.createElement('div');
@@ -74,24 +62,27 @@ function level(x,y,z) {
             function () {
             if(!(cella.classList.contains('clicked')))
             cella.classList.add('clicked');
-            console.log(i); 
-
             if(finalBombe.includes(i)){
-                cella.classList.remove('clicked')
                 cella.classList.add('bomb');
-                console.log(finalBombe);
-
-                alert('Partita Finita! Hai realizzato '+punteggioAttuale+' punti');
-
-                campo.innerHTML = '';
+                alert('Partita Finita! Hai realizzato '+punteggioAttuale+' punti')
+                const allCell = document.querySelectorAll('.cellaBase');
+                    for(const campo of allCell) {
+                        campo.classList.add('pointereve')
+                    }
+                    for(let i = 0; i < finalBombe.length; i++){
+                        
+                        cella.innerHTML = '<p>BOMBA</p>'
+                    }
+             
                 punteggioAttuale = 0;
             }
+
+            else if (cella)
 
             if(cella.classList.contains('clicked')){ 
                 punteggioAttuale++
             }
             numeroPunteggio.innerHTML = 'il tuo punteggio è '+punteggioAttuale;  
         })
-        }
     }
 }
