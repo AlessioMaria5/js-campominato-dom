@@ -28,7 +28,9 @@ let bottoneStart = document.getElementById('genera');
         
         level(facile,10,100);
         level(medium,9,81);
-        level(difficile,7,49)      
+        level(difficile,7,49) 
+        
+    
 })
 
 // LE MIE FUNZIONI ///////////////////////////
@@ -65,11 +67,16 @@ function level(x,y,z) {
 
 
 
-for (i=0 ; i<16 ; i++) {
+let randomPosition = Math.floor(Math.random()*100);
+for (bmb=0 ; bmb<16 ; bmb++) {
 
-    bombe.push(i);
+    bombe.push(randomPosition);
     console.log(bombe);    
 }
+
+
+
+
 
 
 
