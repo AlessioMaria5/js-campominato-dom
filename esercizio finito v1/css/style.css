@@ -84,3 +84,8 @@ main {
 
     pointer-events: none;
 }
+
+.redbomb {
+
+    background-color: yellow;
+}
